@@ -4,11 +4,17 @@
   "description": "a cli to manage GoCD",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/mocha/bin/_mocha --recursive"
   },
   "author": "Ganesh Patil",
   "license": "ISC",
   "dependencies": {
     "commander": "^2.11.0"
+  },
+  "devDependencies": {
+    "assertthat": "^0.10.3",
+    "mocha": "^3.5.0",
+    "proxyquire": "^1.8.0",
+    "sinon": "^3.1.0"
   }
 }

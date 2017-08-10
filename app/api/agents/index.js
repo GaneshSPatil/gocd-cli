@@ -1,11 +1,10 @@
 const path = require('path');
-const url = require('url');
 const request = require('request');
 const config = require(path.resolve('.goconfig.json'));
 
 module.exports = () => {
   const requestConfig = {
-    'url':     url.resolve(config.GOCD_SERVER_URL, 'go/api/agents'),
+    'url':     `${config.GOCD_SERVER_URL}/api/agents`,
     'method':  'GET',
     'auth':    {
       'username': config.GOCD_SERVER_USERNAME,
