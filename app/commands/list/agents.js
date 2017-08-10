@@ -1,4 +1,5 @@
-const path = require('path');
+const path           = require('path');
+const LOGGER         = require(path.resolve('app/services/logger.js'));
 const agentsIndexAPI = require(path.resolve('app/api/agents/index.js'));
 
 module.exports = (program) => {
@@ -6,8 +7,8 @@ module.exports = (program) => {
     .command('list_agents')
     .description('lists all the agents')
     .action(function (options) {
-      agentsIndexAPI(options)
-        .then(console.log)
-        .catch(console.error);
+      return agentsIndexAPI(options)
+        .then(LOGGER.info)
+        .catch(LOGGER.error);
     });
 };
