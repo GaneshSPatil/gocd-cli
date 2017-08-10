@@ -1,0 +1,14 @@
+{
+  "name": "gocd-cli",
+  "version": "0.0.0",
+  "description": "a cli to manage GoCD",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ganesh Patil",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^2.11.0"
+  }
+}

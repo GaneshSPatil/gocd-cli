@@ -1,0 +1,5 @@
+{
+  "GOCD_SERVER_URL": "http://127.0.0.1:8153/go",
+  "GOCD_SERVER_USERNAME": "admin",
+  "GOCD_SERVER_PASSWORD": "badger"
+}
