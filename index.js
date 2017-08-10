@@ -13,10 +13,11 @@ commands.forEach((command) => {
 
 const args = process.argv;
 
-//stupid hack due to commander's space separation under commands
-if(args[2] === 'list') {
+// stupid hack due to commander's space separation under commands
+if (args[2] === 'list') {
   const entity = args.splice(3, 1);
-  args[2] = `${args[2]}_${entity}`
+
+  args[2] = `${args[2]}_${entity}`;
 }
 
 program.parse(args);

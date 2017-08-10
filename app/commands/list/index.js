@@ -6,5 +6,7 @@ const listCommands = [
 ];
 
 module.exports = (program) => {
-  listCommands.forEach((command) => { command(program) })
+  listCommands.forEach((command) => {
+    command(program);
+  });
 };

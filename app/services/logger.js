@@ -1,4 +1,4 @@
 module.exports = {
-  info:  console.log,
-  error: console.error
+  'info': console.log, //eslint-disable-line
+  'error': console.error //eslint-disable-line
 };

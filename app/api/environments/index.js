@@ -5,20 +5,16 @@ const config = require(path.resolve('.goconfig.json'));
 
 module.exports = () => {
   const requestConfig = {
-    'url':     url.resolve(config.GOCD_SERVER_URL, 'go/api/admin/environments'),
-    'method':  'GET',
-    'auth':    {
+    'url': url.resolve(config.GOCD_SERVER_URL, 'go/api/admin/environments'),
+    'method': 'GET',
+    'auth': {
       'username': config.GOCD_SERVER_USERNAME,
       'password': config.GOCD_SERVER_PASSWORD
     },
-    'headers': {
-      'Accept': 'application/vnd.go.cd.v2+json'
-    }
+    'headers': {'Accept': 'application/vnd.go.cd.v2+json'}
   };
 
-  return new Promise((fulfil, reject) => {
-    return request(requestConfig, (err, res) => {
-      err ? reject(err) : fulfil(res.body);
-    });
-  });
+  return new Promise((fulfil, reject) => request(requestConfig, (err, res) => {
+    err ? reject(err) : fulfil(res.body);
+  }));
 };

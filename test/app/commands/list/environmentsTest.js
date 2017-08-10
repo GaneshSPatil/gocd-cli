@@ -1,17 +1,18 @@
-const path       = require('path');
-const sinon      = require('sinon');
-const assert     = require('assertthat');
+const path = require('path');
+const sinon = require('sinon');
+const assert = require('assertthat');
 const proxyquire = require('proxyquire');
 
 const environmentsIndexAPIPath = path.resolve('app/api/environments/index.js');
 const loggerPath = path.resolve('app/services/logger.js');
-const stubbedenvironmentsIndexAPI  = sinon.stub();
+const stubbedenvironmentsIndexAPI = sinon.stub();
 const stubbedLogger = {
-  info: sinon.stub(),
-  error: sinon.stub()
+  'info': sinon.stub(),
+  'error': sinon.stub()
 };
 
-const stubbedRequires         = {};
+const stubbedRequires = {};
+
 stubbedRequires[environmentsIndexAPIPath] = stubbedenvironmentsIndexAPI;
 stubbedRequires[loggerPath] = stubbedLogger;
 
@@ -22,7 +23,7 @@ describe('environments List Command', () => {
   const description = sinon.stub();
   const action = sinon.stub();
 
-  let program = {
+  const program = {
     command,
     description,
     action
@@ -40,17 +41,17 @@ describe('environments List Command', () => {
     action.reset();
   });
 
-  it("should set the command on the program", () => {
+  it('should set the command on the program', () => {
     indexCommand(program);
     assert.that(command.getCall(0).args[0]).is.equalTo('list_environments');
   });
 
-  it("should set the description on the program", () => {
+  it('should set the description on the program', () => {
     indexCommand(program);
     assert.that(description.getCall(0).args[0]).is.equalTo('lists all the environments');
   });
 
-  it("should make api call to environments index on action", () => {
+  it('should make api call to environments index on action', () => {
     stubbedenvironmentsIndexAPI.resolves({});
     indexCommand(program);
     return action.getCall(0).args[0]().then(() => {
@@ -58,8 +59,9 @@ describe('environments List Command', () => {
     });
   });
 
-  it("should log result of action on success", () => {
-    let environmentsList = {};
+  it('should log result of action on success', () => {
+    const environmentsList = {};
+
     stubbedenvironmentsIndexAPI.resolves(environmentsList);
     indexCommand(program);
     return action.getCall(0).args[0]().then(() => {
@@ -67,8 +69,9 @@ describe('environments List Command', () => {
     });
   });
 
-  it("should log result of action on error", () => {
-    let error      = new Error('Boom!!');
+  it('should log result of action on error', () => {
+    const error = new Error('Boom!!');
+
     stubbedenvironmentsIndexAPI.rejects(error);
     indexCommand(program);
     return action.getCall(0).args[0]().then(() => {
