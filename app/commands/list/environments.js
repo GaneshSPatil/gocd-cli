@@ -1,4 +1,5 @@
-const path = require('path');
+const path                 = require('path');
+const LOGGER               = require(path.resolve('app/services/logger.js'));
 const environmentsIndexAPI = require(path.resolve('app/api/environments/index.js'));
 
 module.exports = (program) => {
@@ -6,8 +7,8 @@ module.exports = (program) => {
     .command('list_environments')
     .description('lists all the environments')
     .action(function (options) {
-      environmentsIndexAPI(options)
-        .then(console.log)
-        .catch(console.error);
+      return environmentsIndexAPI(options)
+        .then(LOGGER.info)
+        .catch(LOGGER.error);
     });
 };
