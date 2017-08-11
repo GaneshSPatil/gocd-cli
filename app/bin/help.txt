@@ -1,0 +1,16 @@
+
+  Usage: index [options] [command]
+
+
+  Options:
+
+    -h, --help  output usage information
+
+
+  Commands:
+
+    list environments        lists all the environments
+    list agents              lists all the agents
+
+    get pipeline [options]   get a pipeline
+

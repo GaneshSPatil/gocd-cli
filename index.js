@@ -1,5 +1,11 @@
 const path = require('path');
+const fs = require('fs');
 const program = require('commander');
+const customHelpText = fs.readFileSync(path.resolve('app/bin/help.txt'), 'utf8');
+
+program.helpInformation = () => {
+  return customHelpText;
+};
 
 const list = require(path.resolve('app/commands/list/index.js'));
 const get = require(path.resolve('app/commands/get/index.js'));
