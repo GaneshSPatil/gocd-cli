@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "./node_modules/.bin/eslint index.js app test --fix",
+    "spec": "./node_modules/mocha/bin/_mocha --recursive",
     "test": "./node_modules/.bin/eslint index.js app test && ./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- --recursive"
   },
   "author": "Ganesh Patil",
