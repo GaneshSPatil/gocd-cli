@@ -1,5 +1,5 @@
 
-  Usage: index [options] [command]
+  Usage: gocd [command] [options]
 
 
   Options:
