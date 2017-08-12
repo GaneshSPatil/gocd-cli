@@ -12,7 +12,7 @@ const stubbedRequires = {};
 
 stubbedRequires[loggerPath] = stubbedLogger;
 
-const argumentValidator = proxyquire(path.resolve('app/services/argumentHelper.js'), stubbedRequires);
+const argumentHelper = proxyquire(path.resolve('app/services/argumentHelper.js'), stubbedRequires);
 
 
 describe('Argument Validator', () => {
@@ -33,7 +33,7 @@ describe('Argument Validator', () => {
       const option = '--option';
 
       assert.that(() => {
-        argumentValidator.validateNotNull(arg, option);
+        argumentHelper.validateNotNull(arg, option);
       }).is.not.throwing();
     });
 
@@ -41,11 +41,26 @@ describe('Argument Validator', () => {
       const arg = undefined; //eslint-disable-line
       const option = '--option';
 
-      argumentValidator.validateNotNull(arg, option);
+      argumentHelper.validateNotNull(arg, option);
 
       assert.that(stubbedLogger.error.getCall(0).args[0]).is.equalTo('\n error: option \'--option\' argument missing \n');
       assert.that(stubbedExit.getCall(0).args[0]).is.equalTo(1);
     });
+  });
 
+  describe('parse', () => {
+    it('should concat list command arguments', () => {
+      const args = ['node', 'foo', 'list', 'something'];
+      const expectedArgs = ['node', 'foo', 'list_something'];
+
+      assert.that(argumentHelper.parse(args)).is.equalTo(expectedArgs);
+    });
+
+    it('should concat get command arguments', () => {
+      const args = ['node', 'foo', 'get', 'something'];
+      const expectedArgs = ['node', 'foo', 'get_something'];
+
+      assert.that(argumentHelper.parse(args)).is.equalTo(expectedArgs);
+    });
   });
 });
