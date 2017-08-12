@@ -3,7 +3,8 @@ const sinon = require('sinon');
 const assert = require('assertthat');
 const proxyquire = require('proxyquire');
 
-const goconfigPath = path.resolve('.goconfig.json');
+const systemProperties = require(path.resolve('app/configs/systemProperties.js'));
+const goconfigPath = path.join(systemProperties.GO_CONFIG_FILE_PATH);
 
 const stubbedGoConfig = {
   'GOCD_SERVER_URL': 'http://go_server_url.com/go',

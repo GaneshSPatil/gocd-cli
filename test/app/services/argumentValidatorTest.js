@@ -12,7 +12,7 @@ const stubbedRequires = {};
 
 stubbedRequires[loggerPath] = stubbedLogger;
 
-const argumentValidator = proxyquire(path.resolve('app/services/argumentValidator.js'), stubbedRequires);
+const argumentValidator = proxyquire(path.resolve('app/services/argumentHelper.js'), stubbedRequires);
 
 
 describe('Argument Validator', () => {

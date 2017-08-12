@@ -5,7 +5,7 @@ const proxyquire = require('proxyquire');
 
 const pipelineGetAPIPath = path.resolve('app/api/pipelines/get.js');
 const loggerPath = path.resolve('app/services/logger.js');
-const argumentValidatorPath = path.resolve('app/services/argumentValidator.js');
+const argumentValidatorPath = path.resolve('app/services/argumentHelper.js');
 
 const stubbedPipelinesGetAPI = sinon.stub();
 const stubbedLogger = {

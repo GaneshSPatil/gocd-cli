@@ -8,5 +8,15 @@ module.exports = {
       LOGGER.error(`\n error: option '${option}' argument missing \n`);
       process.exit(1);
     }
+  },
+
+  'parse': (args) => {
+    if (args[2] === 'list' || args[2] === 'get') {
+      const entity = args.splice(3, 1);
+
+      args[2] = `${args[2]}_${entity}`;
+    }
+
+    return args;
   }
 };

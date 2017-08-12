@@ -1,7 +1,8 @@
 const path = require('path');
 const url = require('url');
 const request = require('request');
-const config = require(path.resolve('.goconfig.json'));
+const systemProperties = require(path.resolve('app/configs/systemProperties.js'));
+const config = require(systemProperties.GO_CONFIG_FILE_PATH);
 
 module.exports = () => {
   const requestConfig = {
