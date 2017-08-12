@@ -1,9 +1,10 @@
 const path = require('path');
 const request = require('request');
 const systemProperties = require(path.resolve('app/configs/systemProperties.js'));
-const config = require(systemProperties.GO_CONFIG_FILE_PATH);
 
 module.exports = () => {
+  const config = require(systemProperties.GO_CONFIG_FILE_PATH);
+
   const requestConfig = {
     'url': `${config.GOCD_SERVER_URL}/api/agents`,
     'method': 'GET',

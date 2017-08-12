@@ -1,5 +1,8 @@
 /* eslint-disable */
+const fs = require('fs');
 const path = require('path');
+const systemProperties = require(path.resolve('app/configs/systemProperties.js'));
+const goConfigFilePath = systemProperties.GO_CONFIG_FILE_PATH;
 const LOGGER = require(path.resolve('app/services/logger.js'));
 
 module.exports = {
@@ -23,6 +26,19 @@ module.exports = {
   'validateNotEmpty': (args) => {
     if (args.length == 2) {
       LOGGER.error(`\n error: command not found!! \n`);
+      process.exit(1);
+    }
+  },
+
+  'validateAuthSpecified': (args) => {
+    if( args.includes('configure')) return;
+    if(!fs.existsSync(goConfigFilePath)) {
+      const errorMessage = [
+        '',
+        ' error: cli auth not configured!!',
+        ''
+      ].join('\n');
+      LOGGER.error(errorMessage);
       process.exit(1);
     }
   }

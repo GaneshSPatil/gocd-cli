@@ -2,9 +2,9 @@ const path = require('path');
 const url = require('url');
 const request = require('request');
 const systemProperties = require(path.resolve('app/configs/systemProperties.js'));
-const config = require(systemProperties.GO_CONFIG_FILE_PATH);
 
 module.exports = () => {
+  const config = require(systemProperties.GO_CONFIG_FILE_PATH);
   const requestConfig = {
     'url': url.resolve(config.GOCD_SERVER_URL, 'go/api/admin/environments'),
     'method': 'GET',
