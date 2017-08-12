@@ -4,13 +4,18 @@ const sinon = require('sinon');
 const proxyquire = require('proxyquire');
 
 const loggerPath = path.resolve('app/services/logger.js');
+
 const stubbedLogger = {
   'info': sinon.stub(),
   'error': sinon.stub()
 };
+
+const stubbedFs = {'existsSync': sinon.stub()};
+
 const stubbedRequires = {};
 
 stubbedRequires[loggerPath] = stubbedLogger;
+stubbedRequires.fs = stubbedFs;
 
 const argumentHelper = proxyquire(path.resolve('app/services/argumentHelper.js'), stubbedRequires);
 
@@ -25,6 +30,8 @@ describe('Argument Validator', () => {
 
   afterEach(() => {
     stubbedExit.reset();
+    stubbedLogger.error.reset();
+    stubbedLogger.info.reset();
   });
 
   describe('validateNotNull', () => {
@@ -32,9 +39,10 @@ describe('Argument Validator', () => {
       const arg = 'some-value';
       const option = '--option';
 
-      assert.that(() => {
-        argumentHelper.validateNotNull(arg, option);
-      }).is.not.throwing();
+      argumentHelper.validateNotNull(arg, option);
+
+      assert.that(stubbedLogger.error.callCount).is.equalTo(0);
+      assert.that(stubbedExit.callCount).is.equalTo(0);
     });
 
     it('should throw when argument is not provided', () => {
@@ -61,6 +69,72 @@ describe('Argument Validator', () => {
       const expectedArgs = ['node', 'foo', 'get_something'];
 
       assert.that(argumentHelper.parse(args)).is.equalTo(expectedArgs);
+    });
+
+    it('should do nothing for any other command arguments', () => {
+      const args = ['node', 'foo', 'configure'];
+
+      assert.that(argumentHelper.parse(args)).is.equalTo(args);
+    });
+  });
+
+  describe('validateNotEmpty', () => {
+    it('should validate command is specified', () => {
+      argumentHelper.validateNotEmpty(['node', 'foo', 'something']);
+
+      assert.that(stubbedLogger.error.callCount).is.equalTo(0);
+      assert.that(stubbedExit.callCount).is.equalTo(0);
+    });
+
+    it('should error when command is not specified', () => {
+      argumentHelper.validateNotEmpty(['node', 'foo']);
+
+      assert.that(stubbedLogger.error.callCount).is.equalTo(1);
+      assert.that(stubbedExit.callCount).is.equalTo(1);
+
+      assert.that(stubbedLogger.error.getCall(0).args[0]).is.equalTo('\n error: command not found!! \n');
+      assert.that(stubbedExit.getCall(0).args[0]).is.equalTo(1);
+    });
+  });
+
+  describe('validateAuthSpecified', () => {
+    it('should not validate auth specified check for help command (--help)', () => {
+      argumentHelper.validateAuthSpecified(['node', 'foo', '--help']);
+
+      assert.that(stubbedLogger.error.callCount).is.equalTo(0);
+      assert.that(stubbedExit.callCount).is.equalTo(0);
+    });
+
+    it('should not validate auth specified check for help command (-h)', () => {
+      argumentHelper.validateAuthSpecified(['node', 'foo', '-h']);
+
+      assert.that(stubbedLogger.error.callCount).is.equalTo(0);
+      assert.that(stubbedExit.callCount).is.equalTo(0);
+    });
+
+    it('should not validate auth specified check for configure command', () => {
+      argumentHelper.validateAuthSpecified(['node', 'foo', 'configure']);
+
+      assert.that(stubbedLogger.error.callCount).is.equalTo(0);
+      assert.that(stubbedExit.callCount).is.equalTo(0);
+    });
+
+    it('should error when auth is not specified', () => {
+      argumentHelper.validateAuthSpecified(['node', 'foo', 'list']);
+
+      assert.that(stubbedLogger.error.callCount).is.equalTo(1);
+      assert.that(stubbedExit.callCount).is.equalTo(1);
+
+      assert.that(stubbedLogger.error.getCall(0).args[0]).is.equalTo('\n error: cli auth not configured!!\n');
+      assert.that(stubbedExit.getCall(0).args[0]).is.equalTo(1);
+    });
+
+    it('should not error when auth is specified', () => {
+      stubbedFs.existsSync.returns(true);
+      argumentHelper.validateAuthSpecified(['node', 'foo', 'list']);
+
+      assert.that(stubbedLogger.error.callCount).is.equalTo(0);
+      assert.that(stubbedExit.callCount).is.equalTo(0);
     });
   });
 });
