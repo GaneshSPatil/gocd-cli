@@ -1,8 +1,16 @@
 {
-  "name": "gocd-cli",
-  "version": "0.0.0",
+  "name": "gocd",
+  "version": "0.1.0",
   "description": "a cli to manage GoCD",
-  "main": "index.js",
+  "contributors": [
+    {
+      "name": "Ganesh Patil",
+      "email": "ganeshpl@thoughtworks.com"
+    }
+  ],
+  "bin": {
+    "gocd": "index.js"
+  },
   "scripts": {
     "lint": "./node_modules/.bin/eslint index.js app test --fix",
     "spec": "./node_modules/mocha/bin/_mocha --recursive",
@@ -21,5 +29,14 @@
     "mocha": "^3.5.0",
     "proxyquire": "^1.8.0",
     "sinon": "^3.1.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GaneshSPatil/gocd-cli"
+  },
+  "keywords": [
+    "gocd",
+    "cli"
+  ],
+  "license": "ISC"
 }
