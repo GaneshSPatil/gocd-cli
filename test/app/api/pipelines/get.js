@@ -1,7 +1,7 @@
 const path = require('path');
 const sinon = require('sinon');
 const assert = require('assertthat');
-const proxyquire = require('proxyquire');
+const proxyquire = require('proxyquire').noCallThru();
 
 const systemProperties = require(path.resolve('app/configs/systemProperties.js'));
 const goconfigPath = path.join(systemProperties.GO_CONFIG_FILE_PATH);
