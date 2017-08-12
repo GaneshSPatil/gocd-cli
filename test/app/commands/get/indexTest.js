@@ -5,13 +5,16 @@ const proxyquire = require('proxyquire');
 
 const pipelinesGetCommandPath = path.resolve('app/commands/get/pipeline.js');
 const agentsGetCommandPath = path.resolve('app/commands/get/agent.js');
+const environmentsGetCommandPath = path.resolve('app/commands/get/environment.js');
 const stubbedPipelinesGetCommand = sinon.stub();
 const stubbedAgentsGetCommand = sinon.stub();
+const stubbedEnvironmentsGetCommand = sinon.stub();
 
 const stubbedRequires = {};
 
 stubbedRequires[pipelinesGetCommandPath] = stubbedPipelinesGetCommand;
 stubbedRequires[agentsGetCommandPath] = stubbedAgentsGetCommand;
+stubbedRequires[environmentsGetCommandPath] = stubbedEnvironmentsGetCommand;
 
 const getCommand = proxyquire(path.resolve('app/commands/get/index.js'), stubbedRequires);
 
@@ -30,6 +33,9 @@ describe('Get Command', () => {
 
     assert.that(stubbedAgentsGetCommand.callCount).is.equalTo(1);
     assert.that(stubbedAgentsGetCommand.getCall(0).args[0]).is.equalTo(program);
+
+    assert.that(stubbedEnvironmentsGetCommand.callCount).is.equalTo(1);
+    assert.that(stubbedEnvironmentsGetCommand.getCall(0).args[0]).is.equalTo(program);
   });
 
 });
