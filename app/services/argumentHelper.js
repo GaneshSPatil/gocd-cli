@@ -18,5 +18,12 @@ module.exports = {
     }
 
     return args;
+  },
+
+  'validateNotEmpty': (args) => {
+    if (args.length == 2) {
+      LOGGER.error(`\n error: command not found!! \n`);
+      process.exit(1);
+    }
   }
 };
