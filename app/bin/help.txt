@@ -15,4 +15,5 @@
     list agents              lists all the agents
 
     get pipeline [options]   get a pipeline
+    get agent [options]      get an agent
 
