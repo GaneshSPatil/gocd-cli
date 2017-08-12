@@ -31,7 +31,9 @@ module.exports = {
   },
 
   'validateAuthSpecified': (args) => {
-    if( args.includes('configure')) return;
+    if(args.includes('configure')) return;
+    if(args.includes('--help')) return;
+    if(args.includes('-h')) return;
     if(!fs.existsSync(goConfigFilePath)) {
       const errorMessage = [
         '',
