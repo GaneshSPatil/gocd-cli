@@ -9,6 +9,8 @@
 
   Commands:
 
+    configure [options]      configure cli authentication
+
     list environments        lists all the environments
     list agents              lists all the agents
 

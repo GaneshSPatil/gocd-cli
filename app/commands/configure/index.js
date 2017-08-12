@@ -16,7 +16,7 @@ module.exports = (program) => {
     .option(locationOption, 'GoCD server url')
     .option(usernameOption, 'GoCD admin username')
     .option(passwordOption, 'GoCD admin password')
-    .description('configure authentication')
+    .description('configure cli authentication')
     .action((options) => {
       argumentValidator.validateNotNull(options.location, locationOption);
       argumentValidator.validateNotNull(options.username, usernameOption);
