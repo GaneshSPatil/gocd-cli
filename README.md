@@ -39,6 +39,11 @@ gocd get pipeline --name='up42'
 gocd get agent --uuid="ee9f822b-eb66-4c1b-996b-c9e62a9e4241" 
 ```
 
+### get an environment  
+```
+gocd get environment -n 'dev' 
+```
+
 ### help
 ```
 gocd --help

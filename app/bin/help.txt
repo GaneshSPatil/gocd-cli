@@ -9,11 +9,12 @@
 
   Commands:
 
-    configure [options]      configure cli authentication
+    configure [options]         configure cli authentication
 
-    list environments        lists all the environments
-    list agents              lists all the agents
+    list environments           lists all the environments
+    list agents                 lists all the agents
 
-    get pipeline [options]   get a pipeline
-    get agent [options]      get an agent
+    get pipeline [options]      get a pipeline
+    get agent [options]         get an agent
+    get environment [options]   get an environment
 
