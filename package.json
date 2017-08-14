@@ -14,7 +14,8 @@
   "scripts": {
     "lint": "./node_modules/.bin/eslint index.js app test --fix",
     "spec": "./node_modules/mocha/bin/_mocha --recursive",
-    "test": "./node_modules/.bin/eslint index.js app test && ./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- --recursive"
+    "test": "npm run lint && ./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- --recursive",
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
   },
   "author": "Ganesh Patil",
   "license": "ISC",
@@ -24,6 +25,7 @@
   },
   "devDependencies": {
     "assertthat": "^0.10.3",
+    "coveralls": "^2.13.1",
     "eslint": "^4.4.1",
     "istanbul": "^0.4.5",
     "mocha": "^3.5.0",
@@ -37,6 +39,5 @@
   "keywords": [
     "gocd",
     "cli"
-  ],
-  "license": "ISC"
+  ]
 }

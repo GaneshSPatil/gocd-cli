@@ -5,6 +5,8 @@ install:
     - npm install
 script:
     - npm test
+after_success: 'npm run coveralls'
+
 addons:
   artifacts:
     working_dir: coverage
