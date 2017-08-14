@@ -1,6 +1,6 @@
 # GoCD CLI
 
-GoCD CLI provides a fluent interface to manage GoCD.
+a fluent CLI-based access to GoCD API for managing your CI.
 
 ## Installation
 
