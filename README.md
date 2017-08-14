@@ -17,46 +17,28 @@ gocd configure --location='https://build.gocd.org' --username='admin' --password
 
 Now you are able to use the various commands.
 
-## Available Commands
-
-### list agents
+## Interact with Agents
 ```
+gocd get agent --uuid="ee9f822b-eb66-4c1b-996b-c9e62a9e4241"
 gocd list agents
-```
-
-### list agents by state
-```
 gocd list agents --state='Missing'
 ```
 
-### list templates
+## Interact with Templates
 ```
+gocd get template --name="Dev"
 gocd list templates
 ```
 
-### list environments
+## Interact with Environments
 ```
+gocd get environment -n 'dev'
 gocd list environments
 ```
 
-### get a pipeline  
+## Interact with Pipelines
 ```
 gocd get pipeline --name='up42' 
-```
-
-### get an agent  
-```
-gocd get agent --uuid="ee9f822b-eb66-4c1b-996b-c9e62a9e4241" 
-```
-
-### get a template  
-```
-gocd get template --name="Dev" 
-```
-
-### get an environment  
-```
-gocd get environment -n 'dev' 
 ```
 
 ### help
