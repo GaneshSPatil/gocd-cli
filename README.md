@@ -1,4 +1,4 @@
-# GoCD CLI
+# GoCD CLI  [![Build Status](https://travis-ci.org/GaneshSPatil/gocd-cli.svg?branch=master)](https://travis-ci.org/GaneshSPatil/gocd-cli) [![npm version](https://badge.fury.io/js/gocd.svg)](https://badge.fury.io/js/gocd) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 a fluent CLI-based access to GoCD API for managing your CI.
 
