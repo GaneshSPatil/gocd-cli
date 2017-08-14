@@ -11,9 +11,10 @@
 
     configure [options]         configure cli authentication
 
-    list environments           lists all the environments
     list agents                 lists all the agents
     list agents [options]       lists agents by state
+    list templates              lists all the templates
+    list environments           lists all the environments
 
     get pipeline [options]      get a pipeline
     get agent [options]         get an agent

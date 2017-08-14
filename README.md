@@ -29,6 +29,10 @@ gocd list agents
 gocd list agents --state='Missing'
 ```
 
+### list templates
+```
+gocd list templates
+```
 
 ### list environments
 ```
