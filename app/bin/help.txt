@@ -16,7 +16,8 @@
     list templates              lists all the templates
     list environments           lists all the environments
 
-    get pipeline [options]      get a pipeline
     get agent [options]         get an agent
+    get template [options]      get a template
+    get pipeline [options]      get a pipeline
     get environment [options]   get an environment
 
