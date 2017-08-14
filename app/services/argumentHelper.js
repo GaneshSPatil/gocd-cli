@@ -13,6 +13,15 @@ module.exports = {
     }
   },
 
+  'validateAnyOf': (arg, allOptions, option) => {
+    if(!arg) return;
+    const isValid = allOptions.some((opt) => arg === opt);
+    if(!isValid) {
+      LOGGER.error(`\n error: invalid value '${arg}' specified for option '${option}' \n`);
+      process.exit(1);
+    }
+  },
+
   'parse': (args) => {
     if (args[2] === 'list' || args[2] === 'get') {
       const entity = args.splice(3, 1);

@@ -1,7 +1,7 @@
 const path = require('path');
 
 const LOGGER = require(path.resolve('app/services/logger.js'));
-const argumentValidator = require(path.resolve('app/services/argumentHelper.js'));
+const argumentHelper = require(path.resolve('app/services/argumentHelper.js'));
 
 const environmentGetAPI = require(path.resolve('app/api/environments/get.js'));
 
@@ -13,7 +13,7 @@ module.exports = (program) => {
     .option(nameOption, 'Name of the environment')
     .description('get an environment')
     .action((options) => {
-      argumentValidator.validateNotNull(options.name, nameOption);
+      argumentHelper.validateNotNull(options.name, nameOption);
       return environmentGetAPI(options.name)
         .then(LOGGER.info)
         .catch(LOGGER.error);

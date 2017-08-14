@@ -137,4 +137,24 @@ describe('Argument Validator', () => {
       assert.that(stubbedExit.callCount).is.equalTo(0);
     });
   });
+
+  describe('validateAnyOf', () => {
+    it('should not validate for undefined arg', () => {
+      argumentHelper.validateAnyOf();
+
+      assert.that(stubbedLogger.error.callCount).is.equalTo(0);
+      assert.that(stubbedExit.callCount).is.equalTo(0);
+    });
+
+    it('should throw error when specified arg is not present in the allOptions', () => {
+      argumentHelper.validateAnyOf('ten', ['one', 'two', 'three'], '--count');
+
+      assert.that(stubbedLogger.error.callCount).is.equalTo(1);
+      assert.that(stubbedLogger.error.callCount).is.equalTo(1);
+
+      assert.that(stubbedLogger.error.getCall(0).args[0]).is.equalTo('\n error: invalid value \'ten\' specified for option \'--count\' \n');
+      assert.that(stubbedExit.getCall(0).args[0]).is.equalTo(1);
+    });
+
+  });
 });
