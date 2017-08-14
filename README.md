@@ -24,6 +24,12 @@ Now you are able to use the various commands.
 gocd list agents
 ```
 
+### list agents by state
+```
+gocd list agents --state='Missing'
+```
+
+
 ### list environments
 ```
 gocd list environments
