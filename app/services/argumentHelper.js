@@ -23,7 +23,7 @@ module.exports = {
   },
 
   'parse': (args) => {
-    if (args[2] === 'list' || args[2] === 'get') {
+    if (args[2] === 'list' || args[2] === 'get' || args[2] === 'trigger') {
       const entity = args.splice(3, 1);
 
       args[2] = `${args[2]}_${entity}`;
