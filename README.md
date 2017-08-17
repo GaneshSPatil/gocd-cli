@@ -39,6 +39,10 @@ gocd list environments
 ## Interact with Pipelines
 ```
 gocd get pipeline --name='up42' 
+```
+
+## Trigger
+``` 
 gocd trigger pipeline --name='up42'
 ```
 
