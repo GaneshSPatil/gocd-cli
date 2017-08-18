@@ -7,6 +7,7 @@ const dataFolderPath = systemProperties.DATA_FOLDER_PATH;
 const commands = [
   require(path.resolve('app/commands/get/index.js')),
   require(path.resolve('app/commands/list/index.js')),
+  require(path.resolve('app/commands/status/index.js')),
   require(path.resolve('app/commands/trigger/index.js')),
   require(path.resolve('app/commands/configure/index.js'))
 ];
