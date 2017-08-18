@@ -23,7 +23,8 @@ module.exports = {
   },
 
   'parse': (args) => {
-    if (args[2] === 'list' || args[2] === 'get' || args[2] === 'trigger') {
+    const mergeCommands = ['list', 'get', 'trigger', 'status'];
+    if (mergeCommands.includes(args[2])) {
       const entity = args.splice(3, 1);
 
       args[2] = `${args[2]}_${entity}`;

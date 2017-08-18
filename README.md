@@ -46,6 +46,11 @@ gocd get pipeline --name='up42'
 gocd trigger pipeline --name='up42'
 ```
 
+## Status
+``` 
+gocd status pipeline --name='up42'
+```
+
 ### help
 ```
 gocd --help

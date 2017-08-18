@@ -21,5 +21,8 @@
     get pipeline [options]        get a pipeline
     get environment [options]     get an environment
 
+    status pipeline [options]     status a pipeline
+
     trigger pipeline [options]    trigger a pipeline
+
 

@@ -78,6 +78,13 @@ describe('Argument Validator', () => {
       assert.that(argumentHelper.parse(args)).is.equalTo(expectedArgs);
     });
 
+    it('should concat status command arguments', () => {
+      const args = ['node', 'foo', 'status', 'something'];
+      const expectedArgs = ['node', 'foo', 'status_something'];
+
+      assert.that(argumentHelper.parse(args)).is.equalTo(expectedArgs);
+    });
+
     it('should do nothing for any other command arguments', () => {
       const args = ['node', 'foo', 'configure'];
 
