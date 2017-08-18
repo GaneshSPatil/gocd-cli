@@ -190,5 +190,4 @@ describe('Stage Status Command', () => {
       action.getCall(0).args[0]({});
     }).is.throwing('Boom!!');
   });
-
 });
