@@ -23,6 +23,7 @@
 
     status pipeline [options]     status a pipeline
     status stage [options]        status a stage
+    status job [options]          status a job
 
     trigger pipeline [options]    trigger a pipeline
 

@@ -50,6 +50,7 @@ gocd trigger pipeline --name='up42'
 ``` 
 gocd status pipeline --name='up42'
 gocd status stage --pipeline_name="up42" --stage_name="up42_stage"
+gocd status job --pipeline_name="up42" --stage_name="up42_stage" --job_name="up42_job"
 ```
 
 ### help
